@@ -1,0 +1,17 @@
+branch: build-1
+tasks:
+  conda-linux:
+    branch: build-1-conda-linux
+    commit: 545efef3f46d74606a37ca7234ff31af00393c7f
+    params:
+      ARROW_BRANCH: nightly
+      ARROW_REPO: https://github.com/cpcloud/arrow.git
+      ARROW_SHA: 07d3dab6054b6ade0676f974f2a7d4306931b4ee
+      ARROW_VERSION: 0.9.1.dev295+dirty
+      BUILD_REF: 07d3dab6054b6ade0676f974f2a7d4306931b4ee
+      BUILD_TAG: build-1
+      EMAIL: cpcloud@gmail.com
+      PLAT: x86_64
+      PYARROW_VERSION: 0.9.1.dev295+dirty
+    platform: LINUX
+    template: conda-recipes/travis.linux.yml
