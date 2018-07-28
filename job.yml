@@ -1,0 +1,89 @@
+!Job
+target: !Target
+  head: feb7d86ab4e96f7a1b8eba991f8f5491d851a89c
+  email: cpcloud@gmail.com
+  branch: ARROW-2929
+  remote: https://github.com/cpcloud/arrow.git
+  version: 0.9.1.dev436
+tasks:
+  conda-osx-py36: !Task
+    platform: osx
+    template: conda-recipes/travis.osx.yml
+    artifacts:
+    - arrow-cpp-0.9.1.dev436-py36(h[a-z0-9]+)_0.tar.bz2
+    - pyarrow-0.9.1.dev436-py36(h[a-z0-9]+)_0.tar.bz2
+    params:
+      variant_config_file: variants/osx_python3.6.yaml
+    branch: build-13-conda-osx-py36
+    commit: 2baeef4a37708206a257be942a269b3bf52f79bc
+  conda-linux-py35: !Task
+    platform: linux
+    template: conda-recipes/travis.linux.yml
+    artifacts:
+    - arrow-cpp-0.9.1.dev436-py35(h[a-z0-9]+)_0.tar.bz2
+    - pyarrow-0.9.1.dev436-py35(h[a-z0-9]+)_0.tar.bz2
+    params:
+      variant_config_file: variants/linux_python3.5.yaml
+    branch: build-13-conda-linux-py35
+    commit: 35e28174ebf5e107b9c45e8eb96c14ef291cd4c1
+  conda-osx-py27: !Task
+    platform: osx
+    template: conda-recipes/travis.osx.yml
+    artifacts:
+    - arrow-cpp-0.9.1.dev436-py27(h[a-z0-9]+)_0.tar.bz2
+    - pyarrow-0.9.1.dev436-py27(h[a-z0-9]+)_0.tar.bz2
+    params:
+      variant_config_file: variants/osx_python2.7.yaml
+    branch: build-13-conda-osx-py27
+    commit: 475a2246bc297e58a460a2020ac028b25e3448c3
+  conda-win-py36: !Task
+    platform: win
+    template: conda-recipes/appveyor.yml
+    artifacts:
+    - arrow-cpp-0.9.1.dev436-py36_vc14(h[a-z0-9]+)_0.tar.bz2
+    - pyarrow-0.9.1.dev436-py36(h[a-z0-9]+)_0.tar.bz2
+    params:
+      variant_config_file: variants\win_c_compilervs2015cxx_compilervs2015python3.6.yaml
+    branch: build-13-conda-win-py36
+    commit: 4ba18e34b7419edbbf8f5afb1b481f603b7a6a0e
+  conda-linux-py36: !Task
+    platform: linux
+    template: conda-recipes/travis.linux.yml
+    artifacts:
+    - arrow-cpp-0.9.1.dev436-py36(h[a-z0-9]+)_0.tar.bz2
+    - pyarrow-0.9.1.dev436-py36(h[a-z0-9]+)_0.tar.bz2
+    params:
+      variant_config_file: variants/linux_python3.6.yaml
+    branch: build-13-conda-linux-py36
+    commit: ab2840f84d59ea82bd3628824f5cf38117b3445f
+  conda-win-py35: !Task
+    platform: win
+    template: conda-recipes/appveyor.yml
+    artifacts:
+    - arrow-cpp-0.9.1.dev436-py35_vc14(h[a-z0-9]+)_0.tar.bz2
+    - pyarrow-0.9.1.dev436-py35(h[a-z0-9]+)_0.tar.bz2
+    params:
+      variant_config_file: variants\win_c_compilervs2015cxx_compilervs2015python3.5.yaml
+    branch: build-13-conda-win-py35
+    commit: 169d94abcdac788121b127cd5a728775b0efbdcd
+  conda-linux-py27: !Task
+    platform: linux
+    template: conda-recipes/travis.linux.yml
+    artifacts:
+    - arrow-cpp-0.9.1.dev436-py27(h[a-z0-9]+)_0.tar.bz2
+    - pyarrow-0.9.1.dev436-py27(h[a-z0-9]+)_0.tar.bz2
+    params:
+      variant_config_file: variants/linux_python2.7.yaml
+    branch: build-13-conda-linux-py27
+    commit: 5591cdf7b125183b9c28042f63ccaedc06746872
+  conda-osx-py35: !Task
+    platform: osx
+    template: conda-recipes/travis.osx.yml
+    artifacts:
+    - arrow-cpp-0.9.1.dev436-py35(h[a-z0-9]+)_0.tar.bz2
+    - pyarrow-0.9.1.dev436-py35(h[a-z0-9]+)_0.tar.bz2
+    params:
+      variant_config_file: variants/osx_python3.5.yaml
+    branch: build-13-conda-osx-py35
+    commit: 31859ba871e9a5044f5933b7e8d9495c9d1dd9de
+branch: build-13
