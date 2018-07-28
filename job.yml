@@ -1,0 +1,101 @@
+!Job
+target: !Target
+  head: c6e33d89d10d9aa324cbd5b6776cadbb367970a7
+  email: cpcloud@gmail.com
+  branch: master
+  remote: https://github.com/cpcloud/arrow.git
+  version: 0.9.1.dev432
+tasks:
+  wheel-osx-cp35m: !Task
+    platform: osx
+    template: python-wheels/travis.osx.yml
+    artifacts:
+    - pyarrow-0.9.1.dev432-cp35-cp35m-macosx_10_6_intel.whl
+    params:
+      numpy_build_version: 1.10.4
+      numpy_test_version: 1.14.0
+      pandas_version: 0.20.3
+      python_version: 3.5
+    branch: build-6-wheel-osx-cp35m
+    commit: 9a11f0499e4488078a50b5139cc5a06b849f3f56
+  wheel-linux-cp27m: !Task
+    platform: linux
+    template: python-wheels/travis.linux.yml
+    artifacts:
+    - pyarrow-0.9.1.dev432-cp27-cp27m-manylinux1_x86_64.whl
+    params:
+      python_version: 2.7,16
+    branch: build-6-wheel-linux-cp27m
+    commit: 62adb72f058ad3272de55e9ea3c0d23ec8ae7ebb
+  wheel-linux-cp27mu: !Task
+    platform: linux
+    template: python-wheels/travis.linux.yml
+    artifacts:
+    - pyarrow-0.9.1.dev432-cp27-cp27mu-manylinux1_x86_64.whl
+    params:
+      python_version: 2.7,32
+    branch: build-6-wheel-linux-cp27mu
+    commit: 4763547a52c9b5ab821df02ae34452c57a43570c
+  wheel-win-cp36m: !Task
+    platform: win
+    template: python-wheels/appveyor.yml
+    artifacts:
+    - pyarrow-0.9.1.dev432-cp36-cp36m-win_amd64.whl
+    params:
+      numpy_version: 1.13
+      python_version: 3.6
+    branch: build-6-wheel-win-cp36m
+    commit: 942897ad040e28984f199465fb5550dfc2149a88
+  wheel-linux-cp36m: !Task
+    platform: linux
+    template: python-wheels/travis.linux.yml
+    artifacts:
+    - pyarrow-0.9.1.dev432-cp36-cp36m-manylinux1_x86_64.whl
+    params:
+      python_version: 3.6,16
+    branch: build-6-wheel-linux-cp36m
+    commit: b419862dafbb2c013224cc2c497bc13cb465be7c
+  wheel-linux-cp35m: !Task
+    platform: linux
+    template: python-wheels/travis.linux.yml
+    artifacts:
+    - pyarrow-0.9.1.dev432-cp35-cp35m-manylinux1_x86_64.whl
+    params:
+      python_version: 3.5,16
+    branch: build-6-wheel-linux-cp35m
+    commit: 8abb303168a4aa4978186a72c300ae0aaa498479
+  wheel-osx-cp27m: !Task
+    platform: osx
+    template: python-wheels/travis.osx.yml
+    artifacts:
+    - pyarrow-0.9.1.dev432-cp27-cp27m-macosx_10_6_intel.whl
+    params:
+      numpy_build_version: 1.10.4
+      numpy_test_version: 1.14.0
+      pandas_version: 0.20.3
+      python_version: 2.7
+    branch: build-6-wheel-osx-cp27m
+    commit: 4f8be8373286ccba681fa10bfd096ce5d2e17f9a
+  wheel-osx-cp36m: !Task
+    platform: osx
+    template: python-wheels/travis.osx.yml
+    artifacts:
+    - pyarrow-0.9.1.dev432-cp36-cp36m-macosx_10_6_intel.whl
+    params:
+      numpy_build_version: 1.11.3
+      numpy_test_version: 1.14.0
+      pandas_version: 0.20.3
+      python_version: 3.6
+    branch: build-6-wheel-osx-cp36m
+    commit: c60bc91a494b3fa800ecf87591c2dcf5f7139809
+  wheel-win-cp35m: !Task
+    platform: win
+    template: python-wheels/appveyor.yml
+    artifacts:
+    - pyarrow-0.9.1.dev432-cp35-cp35m-win_amd64.whl
+    params:
+      numpy_version: 1.13
+      python_version: 3.5
+    branch: build-6-wheel-win-cp35m
+    commit: 8a69de1c6de657ed8586bde1aff702012f208c2f
+branch: build-6
