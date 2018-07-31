@@ -1,0 +1,359 @@
+!Job
+target: !Target
+  head: f8a9bc2f246aedc6003f3224cb3ba7ec551f3bc1
+  email: cpcloud@gmail.com
+  branch: zero-ten-zero
+  remote: https://github.com/cpcloud/arrow.git
+  version: 0.10.0
+tasks:
+  ubuntu-artful: !Task
+    platform: linux
+    template: linux-packages/travis.linux.yml
+    artifacts:
+    - apache-arrow_0.10.0-1.debian.tar.xz
+    - apache-arrow_0.10.0-1.dsc
+    - apache-arrow_0.10.0.orig.tar.gz
+    - gir1.2-arrow-1.0_0.10.0-1_amd64.deb
+    - gir1.2-arrow-gpu-1.0_0.10.0-1_amd64.deb
+    - libarrow-dev_0.10.0-1_amd64.deb
+    - libarrow-glib-dev_0.10.0-1_amd64.deb
+    - libarrow-glib-doc_0.10.0-1_all.deb
+    - libarrow-glib0_0.10.0-1_amd64.deb
+    - libarrow-gpu-dev_0.10.0-1_amd64.deb
+    - libarrow-gpu-glib-dev_0.10.0-1_amd64.deb
+    - libarrow-gpu-glib0_0.10.0-1_amd64.deb
+    - libarrow-gpu10_0.10.0-1_amd64.deb
+    - libarrow-python-dev_0.10.0-1_amd64.deb
+    - libarrow-python10_0.10.0-1_amd64.deb
+    - libarrow10_0.10.0-1_amd64.deb
+    params:
+      build_command: rake apt:build APT_TARGETS=ubuntu-artful
+      upload_extensions:
+      - .deb
+      - .dsc
+      - .debian.tar.xz
+      - .orig.tar.gz
+    branch: build-23-ubuntu-artful
+    commit: 6dd26d664f76b70bf7b51a42d1d277358af43f32
+  wheel-osx-cp35m: !Task
+    platform: osx
+    template: python-wheels/travis.osx.yml
+    artifacts:
+    - pyarrow-0.10.0-cp35-cp35m-macosx_10_6_intel.whl
+    params:
+      numpy_build_version: 1.10.4
+      numpy_test_version: 1.14.0
+      pandas_version: 0.20.3
+      python_version: 3.5
+    branch: build-23-wheel-osx-cp35m
+    commit: 608d95db53515663bdda14aa93927335bbb0ad15
+  conda-win-py36: !Task
+    platform: win
+    template: conda-recipes/appveyor.yml
+    artifacts:
+    - arrow-cpp-0.10.0-py36_vc14(h[a-z0-9]+)_0.tar.bz2
+    - pyarrow-0.10.0-py36(h[a-z0-9]+)_0.tar.bz2
+    params:
+      variant_config_file: variants\win_c_compilervs2015cxx_compilervs2015python3.6.yaml
+    branch: build-23-conda-win-py36
+    commit: 2f2a71bfa7fc8ef9b2c499dafeda965e13a90231
+  conda-osx-py36: !Task
+    platform: osx
+    template: conda-recipes/travis.osx.yml
+    artifacts:
+    - arrow-cpp-0.10.0-py36(h[a-z0-9]+)_0.tar.bz2
+    - pyarrow-0.10.0-py36(h[a-z0-9]+)_0.tar.bz2
+    params:
+      variant_config_file: variants/osx_python3.6.yaml
+    branch: build-23-conda-osx-py36
+    commit: 702edfeb424334b0ffcbaf17524924d8333df814
+  wheel-win-cp36m: !Task
+    platform: win
+    template: python-wheels/appveyor.yml
+    artifacts:
+    - pyarrow-0.10.0-cp36-cp36m-win_amd64.whl
+    params:
+      numpy_version: 1.13
+      python_version: 3.6
+    branch: build-23-wheel-win-cp36m
+    commit: f6b43f9e275822b6ff8316205234392ebbd3e240
+  wheel-linux-cp27mu: !Task
+    platform: linux
+    template: python-wheels/travis.linux.yml
+    artifacts:
+    - pyarrow-0.10.0-cp27-cp27mu-manylinux1_x86_64.whl
+    params:
+      python_version: 2.7,32
+    branch: build-23-wheel-linux-cp27mu
+    commit: 43d7b23abf757bd033f400bd58db31a51c2fdd8d
+  conda-linux-py36: !Task
+    platform: linux
+    template: conda-recipes/travis.linux.yml
+    artifacts:
+    - arrow-cpp-0.10.0-py36(h[a-z0-9]+)_0.tar.bz2
+    - pyarrow-0.10.0-py36(h[a-z0-9]+)_0.tar.bz2
+    params:
+      variant_config_file: variants/linux_python3.6.yaml
+    branch: build-23-conda-linux-py36
+    commit: 2e03509b4d55accc4c1d95ee91d5b429cfca76db
+  wheel-osx-cp36m: !Task
+    platform: osx
+    template: python-wheels/travis.osx.yml
+    artifacts:
+    - pyarrow-0.10.0-cp36-cp36m-macosx_10_6_intel.whl
+    params:
+      numpy_build_version: 1.11.3
+      numpy_test_version: 1.14.0
+      pandas_version: 0.20.3
+      python_version: 3.6
+    branch: build-23-wheel-osx-cp36m
+    commit: 8877c1b34744cdabc251d467912f07d4c1ee9b0e
+  wheel-win-cp35m: !Task
+    platform: win
+    template: python-wheels/appveyor.yml
+    artifacts:
+    - pyarrow-0.10.0-cp35-cp35m-win_amd64.whl
+    params:
+      numpy_version: 1.13
+      python_version: 3.5
+    branch: build-23-wheel-win-cp35m
+    commit: 994ce0e862d0ab7fea261bee9ce01319a2943be4
+  conda-linux-py27: !Task
+    platform: linux
+    template: conda-recipes/travis.linux.yml
+    artifacts:
+    - arrow-cpp-0.10.0-py27(h[a-z0-9]+)_0.tar.bz2
+    - pyarrow-0.10.0-py27(h[a-z0-9]+)_0.tar.bz2
+    params:
+      variant_config_file: variants/linux_python2.7.yaml
+    branch: build-23-conda-linux-py27
+    commit: 22b123968a72a130fd5778e8505e7d50361ccdad
+  centos-6: !Task
+    platform: linux
+    template: linux-packages/travis.linux.yml
+    artifacts:
+    - arrow-0.10.0-1.el6.src.rpm
+    - arrow-debuginfo-0.10.0-1.el6.x86_64.rpm
+    - arrow-devel-0.10.0-1.el6.x86_64.rpm
+    - arrow-libs-0.10.0-1.el6.x86_64.rpm
+    - arrow-python-devel-0.10.0-1.el6.x86_64.rpm
+    - arrow-python-libs-0.10.0-1.el6.x86_64.rpm
+    params:
+      build_command: rake yum:build CENTOS_VERSIONS=6
+      upload_extensions:
+      - .rpm
+    branch: build-23-centos-6
+    commit: 9e33ff59be23ec12fc3dd396eed8369dab827f10
+  wheel-osx-cp27m: !Task
+    platform: osx
+    template: python-wheels/travis.osx.yml
+    artifacts:
+    - pyarrow-0.10.0-cp27-cp27m-macosx_10_6_intel.whl
+    params:
+      numpy_build_version: 1.10.4
+      numpy_test_version: 1.14.0
+      pandas_version: 0.20.3
+      python_version: 2.7
+    branch: build-23-wheel-osx-cp27m
+    commit: a6c53b20958461d51c0d844e0ab8b373fbb7ff9f
+  wheel-linux-cp35m: !Task
+    platform: linux
+    template: python-wheels/travis.linux.yml
+    artifacts:
+    - pyarrow-0.10.0-cp35-cp35m-manylinux1_x86_64.whl
+    params:
+      python_version: 3.5,16
+    branch: build-23-wheel-linux-cp35m
+    commit: 032978d53ec4ebfafd25a3d9ff32560d004577af
+  ubuntu-trusty: !Task
+    platform: linux
+    template: linux-packages/travis.linux.yml
+    artifacts:
+    - apache-arrow_0.10.0-1.debian.tar.gz
+    - apache-arrow_0.10.0-1.dsc
+    - apache-arrow_0.10.0.orig.tar.gz
+    - gir1.2-arrow-1.0_0.10.0-1_amd64.deb
+    - libarrow-dev_0.10.0-1_amd64.deb
+    - libarrow-glib-dev_0.10.0-1_amd64.deb
+    - libarrow-glib-doc_0.10.0-1_all.deb
+    - libarrow-glib0_0.10.0-1_amd64.deb
+    - libarrow10_0.10.0-1_amd64.deb
+    params:
+      build_command: rake apt:build APT_TARGETS=ubuntu-trusty
+      upload_extensions:
+      - .deb
+      - .dsc
+      - .debian.tar.gz
+      - .orig.tar.gz
+    branch: build-23-ubuntu-trusty
+    commit: 374aee246fab317870ace8063e91bf4a08e52ac4
+  ubuntu-xenial: !Task
+    platform: linux
+    template: linux-packages/travis.linux.yml
+    artifacts:
+    - apache-arrow_0.10.0-1.debian.tar.xz
+    - apache-arrow_0.10.0-1.dsc
+    - apache-arrow_0.10.0.orig.tar.gz
+    - gir1.2-arrow-1.0_0.10.0-1_amd64.deb
+    - gir1.2-arrow-gpu-1.0_0.10.0-1_amd64.deb
+    - libarrow-dev_0.10.0-1_amd64.deb
+    - libarrow-glib-dev_0.10.0-1_amd64.deb
+    - libarrow-glib-doc_0.10.0-1_all.deb
+    - libarrow-glib0_0.10.0-1_amd64.deb
+    - libarrow-gpu-dev_0.10.0-1_amd64.deb
+    - libarrow-gpu-glib-dev_0.10.0-1_amd64.deb
+    - libarrow-gpu-glib0_0.10.0-1_amd64.deb
+    - libarrow-gpu10_0.10.0-1_amd64.deb
+    - libarrow-python-dev_0.10.0-1_amd64.deb
+    - libarrow-python10_0.10.0-1_amd64.deb
+    - libarrow10_0.10.0-1_amd64.deb
+    params:
+      build_command: rake apt:build APT_TARGETS=ubuntu-xenial
+      upload_extensions:
+      - .deb
+      - .dsc
+      - .debian.tar.xz
+      - .orig.tar.gz
+    branch: build-23-ubuntu-xenial
+    commit: d23b0d756c4ca69f2021073e03445b97e5e24827
+  conda-linux-py35: !Task
+    platform: linux
+    template: conda-recipes/travis.linux.yml
+    artifacts:
+    - arrow-cpp-0.10.0-py35(h[a-z0-9]+)_0.tar.bz2
+    - pyarrow-0.10.0-py35(h[a-z0-9]+)_0.tar.bz2
+    params:
+      variant_config_file: variants/linux_python3.5.yaml
+    branch: build-23-conda-linux-py35
+    commit: 0c261d51afb67405c6d5f0e49ed9f847517df83e
+  debian-stretch: !Task
+    platform: linux
+    template: linux-packages/travis.linux.yml
+    artifacts:
+    - apache-arrow_0.10.0-1.debian.tar.xz
+    - apache-arrow_0.10.0-1.dsc
+    - apache-arrow_0.10.0.orig.tar.gz
+    - gir1.2-arrow-1.0_0.10.0-1_amd64.deb
+    - gir1.2-arrow-gpu-1.0_0.10.0-1_amd64.deb
+    - libarrow-dev_0.10.0-1_amd64.deb
+    - libarrow-glib-dev_0.10.0-1_amd64.deb
+    - libarrow-glib-doc_0.10.0-1_all.deb
+    - libarrow-glib0-dbgsym_0.10.0-1_amd64.deb
+    - libarrow-glib0_0.10.0-1_amd64.deb
+    - libarrow-gpu-dev_0.10.0-1_amd64.deb
+    - libarrow-gpu-glib-dev_0.10.0-1_amd64.deb
+    - libarrow-gpu-glib0-dbgsym_0.10.0-1_amd64.deb
+    - libarrow-gpu-glib0_0.10.0-1_amd64.deb
+    - libarrow-gpu10-dbgsym_0.10.0-1_amd64.deb
+    - libarrow-gpu10_0.10.0-1_amd64.deb
+    - libarrow-python-dev_0.10.0-1_amd64.deb
+    - libarrow-python10-dbgsym_0.10.0-1_amd64.deb
+    - libarrow-python10_0.10.0-1_amd64.deb
+    - libarrow10-dbgsym_0.10.0-1_amd64.deb
+    - libarrow10_0.10.0-1_amd64.deb
+    params:
+      build_command: rake apt:build APT_TARGETS=debian-stretch
+      upload_extensions:
+      - .deb
+      - .dsc
+      - .debian.tar.xz
+      - .orig.tar.gz
+    branch: build-23-debian-stretch
+    commit: 8a461ba690295545e9cd1c0220c025c6d8edca43
+  wheel-linux-cp36m: !Task
+    platform: linux
+    template: python-wheels/travis.linux.yml
+    artifacts:
+    - pyarrow-0.10.0-cp36-cp36m-manylinux1_x86_64.whl
+    params:
+      python_version: 3.6,16
+    branch: build-23-wheel-linux-cp36m
+    commit: fa092b3a7f045d9590640d2b7aff13a0eec64993
+  ubuntu-bionic: !Task
+    platform: linux
+    template: linux-packages/travis.linux.yml
+    artifacts:
+    - apache-arrow_0.10.0-1.debian.tar.xz
+    - apache-arrow_0.10.0-1.dsc
+    - apache-arrow_0.10.0.orig.tar.gz
+    - gir1.2-arrow-1.0_0.10.0-1_amd64.deb
+    - gir1.2-arrow-gpu-1.0_0.10.0-1_amd64.deb
+    - libarrow-dev_0.10.0-1_amd64.deb
+    - libarrow-glib-dev_0.10.0-1_amd64.deb
+    - libarrow-glib-doc_0.10.0-1_all.deb
+    - libarrow-glib0_0.10.0-1_amd64.deb
+    - libarrow-gpu-dev_0.10.0-1_amd64.deb
+    - libarrow-gpu-glib-dev_0.10.0-1_amd64.deb
+    - libarrow-gpu-glib0_0.10.0-1_amd64.deb
+    - libarrow-gpu10_0.10.0-1_amd64.deb
+    - libarrow-python-dev_0.10.0-1_amd64.deb
+    - libarrow-python10_0.10.0-1_amd64.deb
+    - libarrow10_0.10.0-1_amd64.deb
+    params:
+      build_command: rake apt:build APT_TARGETS=ubuntu-bionic
+      upload_extensions:
+      - .deb
+      - .dsc
+      - .debian.tar.xz
+      - .orig.tar.gz
+    branch: build-23-ubuntu-bionic
+    commit: 3d272fa037739806a52b50cc27656396c6ae4eeb
+  conda-osx-py35: !Task
+    platform: osx
+    template: conda-recipes/travis.osx.yml
+    artifacts:
+    - arrow-cpp-0.10.0-py35(h[a-z0-9]+)_0.tar.bz2
+    - pyarrow-0.10.0-py35(h[a-z0-9]+)_0.tar.bz2
+    params:
+      variant_config_file: variants/osx_python3.5.yaml
+    branch: build-23-conda-osx-py35
+    commit: 80f79a2bf74a6daa4184e3219ebae454a8ca2a33
+  conda-osx-py27: !Task
+    platform: osx
+    template: conda-recipes/travis.osx.yml
+    artifacts:
+    - arrow-cpp-0.10.0-py27(h[a-z0-9]+)_0.tar.bz2
+    - pyarrow-0.10.0-py27(h[a-z0-9]+)_0.tar.bz2
+    params:
+      variant_config_file: variants/osx_python2.7.yaml
+    branch: build-23-conda-osx-py27
+    commit: 94444e12d07feffb3c533737cd0251edc7af7e77
+  centos-7: !Task
+    platform: linux
+    template: linux-packages/travis.linux.yml
+    artifacts:
+    - arrow-0.10.0-1.el7.src.rpm
+    - arrow-debuginfo-0.10.0-1.el7.x86_64.rpm
+    - arrow-devel-0.10.0-1.el7.x86_64.rpm
+    - arrow-glib-devel-0.10.0-1.el7.x86_64.rpm
+    - arrow-glib-doc-0.10.0-1.el7.x86_64.rpm
+    - arrow-glib-libs-0.10.0-1.el7.x86_64.rpm
+    - arrow-libs-0.10.0-1.el7.x86_64.rpm
+    - arrow-python-devel-0.10.0-1.el7.x86_64.rpm
+    - arrow-python-libs-0.10.0-1.el7.x86_64.rpm
+    params:
+      build_command: rake yum:build CENTOS_VERSIONS=7
+      upload_extensions:
+      - .rpm
+    branch: build-23-centos-7
+    commit: 1b2dad1b29ad4ce78e85b2ed9797807cb9727a9c
+  conda-win-py35: !Task
+    platform: win
+    template: conda-recipes/appveyor.yml
+    artifacts:
+    - arrow-cpp-0.10.0-py35_vc14(h[a-z0-9]+)_0.tar.bz2
+    - pyarrow-0.10.0-py35(h[a-z0-9]+)_0.tar.bz2
+    params:
+      variant_config_file: variants\win_c_compilervs2015cxx_compilervs2015python3.5.yaml
+    branch: build-23-conda-win-py35
+    commit: 81c8b6dd85c6947a6a4b0f7abbb87426a096b686
+  wheel-linux-cp27m: !Task
+    platform: linux
+    template: python-wheels/travis.linux.yml
+    artifacts:
+    - pyarrow-0.10.0-cp27-cp27m-manylinux1_x86_64.whl
+    params:
+      python_version: 2.7,16
+    branch: build-23-wheel-linux-cp27m
+    commit: 3fefe12379764fdec99c92cd59dcae29ab8e1211
+branch: build-23
